@@ -1,5 +1,3 @@
-require_relative 'bundle/bundler/setup'
-require 'alfred'
 require 'yaml'
 
 class WorkflowConfig

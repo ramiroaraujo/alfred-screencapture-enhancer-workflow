@@ -1,6 +1,5 @@
 # tomar config
 
-require_relative 'bundle/bundler/setup'
 require_relative 'workflow_config'
 
 command      = ARGV[0]
@@ -15,21 +14,21 @@ filename     = File.expand_path("#{config['location'].chomp '/'}/#{config['name'
 if command =~ /^last/
 
   # play error sound if no previous coordinates are available and exit
-  unless File.exist? 'coordinates.txt'
+  unless File.exist? 'coordinates'
     `/usr/bin/afplay /System/Library/Sounds/Funk.aiff`
     exit 1
   end
 
   # read coordinates
-  x_ini, x_end, y_ini, y_end = IO.read('coordinates.txt').split(' ')
-  coordinates = {
-      x: x_ini < x_end ? x_ini : x_end,
-      y: y_ini < y_end ? y_ini : y_end,
-
+  x_ini, x_end, y_ini, y_end = IO.read('coordinates.txt').split(' ').map(&:to_i)
+  coordinates                = {
+      x:      x_ini < x_end ? x_ini : x_end,
+      y:      y_ini < y_end ? y_ini : y_end,
+      width:  x_ini < x_end ? x_end - x_ini : x_ini - x_end,
+      height: y_ini < y_end ? y_end - y_ini : y_ini - y_end,
   }
 
-  puts 'listo'
-
+  area = "-R '#{coordinates[:x]},#{coordinates[:y]},#{coordinates[:width]},#{coordinates[:height]}'"
 end
 
 case command
@@ -38,7 +37,8 @@ case command
   when 'area-clipboard'
     `/usr/sbin/screencapture #{config_flags} -i -c "#{filename}"`
   when 'last-area'
-    puts 'nada'
+    `/usr/sbin/screencapture #{config_flags} -c #{area}`
+    `./pbpaste-image > "#{filename}"`
   when 'last-area-clipboard'
-    puts 'nada'
+    `/usr/sbin/screencapture #{config_flags} -c #{area}`
 end

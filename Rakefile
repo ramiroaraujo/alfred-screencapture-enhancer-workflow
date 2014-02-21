@@ -116,6 +116,18 @@ task :export => [:config] do
   FileUtils.rmtree output if File.exists? output
 
   FileUtils.cp_r $config['path'], output
+
+  Dir.chdir 'pbpaste-image' do
+    `xcodebuild`
+    FileUtils.cp 'build/Release/pbpaste-image' '../workflow/pbpaste-image'
+  end
+
+  Dir.chdir 'save-mouse-coordinates' do
+    `xcodebuild`
+    FileUtils.cp 'build/Release/save-mouse-coordinates' '../workflow/save-mouse-coordinates'
+  end
+
+
   chdir output
 
   # clean up workflow files for export
