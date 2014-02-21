@@ -1,0 +1,7 @@
+workflow/.bundle
+workflow/bundle
+.idea/workspace.xml
+.idea/tasks.xml
+
+# avoid continuous changes to iml file
+# *.iml

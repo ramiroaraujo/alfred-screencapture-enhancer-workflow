@@ -1,0 +1,22 @@
+## workflow build config
+
+# id and name for the workflow (bundle id = domain.id)
+id: alfred-screencapture-workflow
+
+# base domain
+domain: com.tumblr.ramiroaraujo
+
+name: Screencapture
+description: A screencapture façade-like workflow capable of capturing the last region.
+created_by: Ramiro Araujo
+website: https://github.com/ramiroaraujo/alfred-screencapture-workflow
+readme: readme
+
+## development config
+
+# path is the relative path to the workflow in the project root
+path: workflow
+
+# If you are using Alfred's advanced Dropbox sync, indicate the path shown in
+# Alfred Preferences > Advanced > Syncing:
+dropbox: ~/Dropbox

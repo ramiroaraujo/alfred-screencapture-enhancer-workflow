@@ -1,0 +1,6 @@
+[submodule "save-mouse-coordinates"]
+	path = save-mouse-coordinates
+	url = https://github.com/ramiroaraujo/save-mouse-coordinates.git
+[submodule "pbpaste-image"]
+	path = pbpaste-image
+	url = https://github.com/ramiroaraujo/pbpaste-image.git
