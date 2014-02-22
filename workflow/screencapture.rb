@@ -20,7 +20,7 @@ if command =~ /^last/
   end
 
   # read coordinates
-  x_ini, x_end, y_ini, y_end = IO.read('coordinates.txt').split(' ').map(&:to_i)
+  x_ini, x_end, y_ini, y_end = IO.read('coordinates').split(' ').map(&:to_i)
   coordinates                = {
       x:      x_ini < x_end ? x_ini : x_end,
       y:      y_ini < y_end ? y_ini : y_end,
@@ -34,11 +34,21 @@ end
 case command
   when 'area'
     `/usr/sbin/screencapture #{config_flags} -i "#{filename}"`
+    `./exiv2 ex "#{filename}"`
+    `mv -f "#{filename.chomp '.png'}.exv" xmp-metadata`
   when 'area-clipboard'
     `/usr/sbin/screencapture #{config_flags} -i -c "#{filename}"`
+    `./exiv2 ex "#{filename}"`
+    `mv -f "#{filename.chomp '.png'}.exv" xmp-metadata`
   when 'last-area'
     `/usr/sbin/screencapture #{config_flags} -c #{area}`
     `./pbpaste-image > "#{filename}"`
+    `cp -f ./xmp-metadata "#{filename.chomp '.png'}.exv"`
+    `./exiv2 in "#{filename}"`
+    `rm "#{filename.chomp '.png'}.exv"`
   when 'last-area-clipboard'
     `/usr/sbin/screencapture #{config_flags} -c #{area}`
+    `cp -f xmp-metadata "#{filename.chomp '.png'}.exv"`
+    `./exiv2 in "#{filename}"`
+    `rm "#{filename.chomp '.png'}.exv"`
 end
