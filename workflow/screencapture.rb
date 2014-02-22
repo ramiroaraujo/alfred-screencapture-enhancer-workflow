@@ -39,10 +39,10 @@ case command
   when 'last-area'
     `/usr/sbin/screencapture #{config_flags} -c #{area}`
     `./pbpaste-image > "#{filename}"`
+    `/usr/bin/afplay Grab.aif`
     `xattr -wx com.apple.metadata:kMDItemIsScreenCapture '62706C697374303009080000000000000101000000000000000100000000000000000000000000000009' "#{filename}"`
     `xattr -w com.apple.metadata:kMDItemScreenCaptureType 'selection' "#{filename}"`
     `mdimport "#{filename}"`
-    `/usr/bin/afplay Grab.aif`
   when 'last-area-clipboard'
     `/usr/sbin/screencapture #{config_flags} -c #{area}`
     `/usr/bin/afplay Grab.aif`
