@@ -112,60 +112,72 @@ task :export => [:config] do
   filename = "#{$config['id'].chomp '-workflow'}.alfredworkflow"
   output = 'output'
 
+  # reset old packaged workflow
+  `/usr/local/bin/git checkout #{filename}`
+
+  # save uncommited changes
+  `/usr/local/bin/git stash`
+
   FileUtils.rm filename if File.exists? filename
   FileUtils.rmtree output if File.exists? output
 
   FileUtils.cp_r $config['path'], output
 
-  chdir output
 
-  # clean up workflow files for export
-  Dir.foreach('.') do |file|
-    FileUtils.rmtree file if %w(Gemfile Gemfile.lock .bundle coordinates pbpaste-image save-mouse-coordinates).include? file
-  end
+  Dir.chdir output do
 
-  Dir.chdir '../pbpaste-image' do
-    `xcodebuild`
-    FileUtils.cp 'build/Release/pbpaste-image', '../output'
-  end
-
-  Dir.chdir '../save-mouse-coordinates' do
-    `xcodebuild`
-    FileUtils.cp 'build/Release/save-mouse-coordinates', '../output'
-  end
-
-  begin
-    Dir.chdir('bundle/ruby') do
-      Dir.foreach('.') do |dir|
-        next if dir == '.' || dir == '..'
-        FileUtils.rmtree dir if dir != ruby_version
-      end
+    # clean up workflow files for export
+    Dir.foreach('.') do |file|
+      FileUtils.rmtree file if %w(Gemfile Gemfile.lock .bundle coordinates pbpaste-image save-mouse-coordinates).include? file
     end
-    Dir.chdir("bundle/ruby/#{ruby_version}") do
-      Dir.foreach('.') do |dir|
-        FileUtils.rmtree dir if %w(build_info cache doc specifications).include? dir
-      end
-      Dir.chdir('gems') do
+
+    Dir.chdir '../pbpaste-image' do
+      `xcodebuild`
+      FileUtils.cp 'build/Release/pbpaste-image', '../output'
+    end
+
+    Dir.chdir '../save-mouse-coordinates' do
+      `xcodebuild`
+      FileUtils.cp 'build/Release/save-mouse-coordinates', '../output'
+    end
+
+    begin
+      Dir.chdir('bundle/ruby') do
         Dir.foreach('.') do |dir|
           next if dir == '.' || dir == '..'
-          Dir.chdir(dir) do
-            Dir.foreach('.') do |subdir|
-              next if subdir == '.' || subdir == '..'
-              FileUtils.rmtree subdir if !(%w(. .. lib).include? subdir)
+          FileUtils.rmtree dir if dir != ruby_version
+        end
+      end
+      Dir.chdir("bundle/ruby/#{ruby_version}") do
+        Dir.foreach('.') do |dir|
+          FileUtils.rmtree dir if %w(build_info cache doc specifications).include? dir
+        end
+        Dir.chdir('gems') do
+          Dir.foreach('.') do |dir|
+            next if dir == '.' || dir == '..'
+            Dir.chdir(dir) do
+              Dir.foreach('.') do |subdir|
+                next if subdir == '.' || subdir == '..'
+                FileUtils.rmtree subdir if !(%w(. .. lib).include? subdir)
+              end
             end
           end
         end
       end
+    rescue
+      FileUtils.rmtree 'bundle'
+      # nothing
     end
-  rescue
-    FileUtils.rmtree 'bundle'
-   # nothing
+
+    # generates zip
+    `/usr/bin/zip -r ../#{filename} *`
   end
 
-  `/usr/bin/zip -r ../#{filename} *`
 
-  chdir('..')
   FileUtils.rmtree output
+
+  # restore uncommited changes
+  `/usr/local/bin/git stash apply`
 
   puts 'Workflow exported to project directory'
 end
