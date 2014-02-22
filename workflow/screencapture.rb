@@ -34,21 +34,11 @@ end
 case command
   when 'area'
     `/usr/sbin/screencapture #{config_flags} -i "#{filename}"`
-    `./exiv2 ex "#{filename}"`
-    `mv -f "#{filename.chomp '.png'}.exv" xmp-metadata`
   when 'area-clipboard'
     `/usr/sbin/screencapture #{config_flags} -i -c "#{filename}"`
-    `./exiv2 ex "#{filename}"`
-    `mv -f "#{filename.chomp '.png'}.exv" xmp-metadata`
   when 'last-area'
     `/usr/sbin/screencapture #{config_flags} -c #{area}`
     `./pbpaste-image > "#{filename}"`
-    `cp -f ./xmp-metadata "#{filename.chomp '.png'}.exv"`
-    `./exiv2 in "#{filename}"`
-    `rm "#{filename.chomp '.png'}.exv"`
   when 'last-area-clipboard'
     `/usr/sbin/screencapture #{config_flags} -c #{area}`
-    `cp -f xmp-metadata "#{filename.chomp '.png'}.exv"`
-    `./exiv2 in "#{filename}"`
-    `rm "#{filename.chomp '.png'}.exv"`
 end
