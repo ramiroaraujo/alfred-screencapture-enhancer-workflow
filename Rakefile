@@ -117,44 +117,49 @@ task :export => [:config] do
 
   FileUtils.cp_r $config['path'], output
 
-  Dir.chdir 'pbpaste-image' do
-    `xcodebuild`
-    FileUtils.cp 'build/Release/pbpaste-image' '../workflow/pbpaste-image'
-  end
-
-  Dir.chdir 'save-mouse-coordinates' do
-    `xcodebuild`
-    FileUtils.cp 'build/Release/save-mouse-coordinates' '../workflow/save-mouse-coordinates'
-  end
-
-
   chdir output
 
   # clean up workflow files for export
   Dir.foreach('.') do |file|
-    FileUtils.rmtree file if %w(Gemfile Gemfile.lock .bundle).include? file
+    FileUtils.rmtree file if %w(Gemfile Gemfile.lock .bundle coordinates pbpaste-image save-mouse-coordinates).include? file
   end
-  Dir.chdir('bundle/ruby') do
-    Dir.foreach('.') do |dir|
-      next if dir == '.' || dir == '..'
-      FileUtils.rmtree dir if dir != ruby_version
-    end
+
+  Dir.chdir '../pbpaste-image' do
+    `xcodebuild`
+    FileUtils.cp 'build/Release/pbpaste-image', '../output'
   end
-  Dir.chdir("bundle/ruby/#{ruby_version}") do
-    Dir.foreach('.') do |dir|
-      FileUtils.rmtree dir if %w(build_info cache doc specifications).include? dir
-    end
-    Dir.chdir('gems') do
+
+  Dir.chdir '../save-mouse-coordinates' do
+    `xcodebuild`
+    FileUtils.cp 'build/Release/save-mouse-coordinates', '../output'
+  end
+
+  begin
+    Dir.chdir('bundle/ruby') do
       Dir.foreach('.') do |dir|
         next if dir == '.' || dir == '..'
-        Dir.chdir(dir) do
-          Dir.foreach('.') do |subdir|
-            next if subdir == '.' || subdir == '..'
-            FileUtils.rmtree subdir if !(%w(. .. lib).include? subdir)
+        FileUtils.rmtree dir if dir != ruby_version
+      end
+    end
+    Dir.chdir("bundle/ruby/#{ruby_version}") do
+      Dir.foreach('.') do |dir|
+        FileUtils.rmtree dir if %w(build_info cache doc specifications).include? dir
+      end
+      Dir.chdir('gems') do
+        Dir.foreach('.') do |dir|
+          next if dir == '.' || dir == '..'
+          Dir.chdir(dir) do
+            Dir.foreach('.') do |subdir|
+              next if subdir == '.' || subdir == '..'
+              FileUtils.rmtree subdir if !(%w(. .. lib).include? subdir)
+            end
           end
         end
       end
     end
+  rescue
+    FileUtils.rmtree 'bundle'
+   # nothing
   end
 
   `/usr/bin/zip -r ../#{filename} *`
