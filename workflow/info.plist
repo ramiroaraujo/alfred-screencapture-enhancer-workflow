@@ -102,7 +102,7 @@
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>script</key>
-				<string>./save-mouse-coordinates &amp; /usr/bin/ruby screencapture.rb "area"</string>
+				<string>./save-mouse-coordinates &amp; /usr/bin/ruby screencapture.rb "area" "{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -142,15 +142,15 @@
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>keyword</key>
 				<string>screencapture</string>
 				<key>subtext</key>
-				<string>perform an user defined area screen capture, use control, alt or shift for more options</string>
+				<string>optionally write the name of the image file, use control, alt or shift for more options</string>
 				<key>text</key>
-				<string>screencapture</string>
+				<string>Take a screencapture</string>
 				<key>withspace</key>
-				<false/>
+				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.keyword</string>
@@ -190,7 +190,7 @@
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>script</key>
-				<string>./save-mouse-coordinates &amp; /usr/bin/ruby screencapture.rb "area-clipboard"</string>
+				<string>./save-mouse-coordinates &amp; /usr/bin/ruby screencapture.rb "area-clipboard" "{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -207,7 +207,7 @@
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>script</key>
-				<string>/usr/bin/ruby screencapture.rb "last-area"</string>
+				<string>/usr/bin/ruby screencapture.rb "last-area" "{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -249,7 +249,7 @@
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>script</key>
-				<string>/usr/bin/ruby screencapture.rb "last-area-clipboard"</string>
+				<string>/usr/bin/ruby screencapture.rb "last-area-clipboard" "{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>

@@ -1,12 +1,14 @@
 require_relative 'workflow_config'
 
 command = ARGV[0]
+name = ARGV[1].to_s
 config = WorkflowConfig.new.config
 
 # calculate command line options for screencapture
 config_flags = "-t #{config['format']}#{ ' -0' unless config['shadow']}"
 date = `date "+%Y-%m-%d at %H.%M.%S"`.chomp "\n"
-filename = File.expand_path("#{config['location'].chomp '/'}/#{config['name']} #{date}.#{config['format']}")
+filename = !(name =~ /^[[:space:]]*$/) ? name : "#{config['name']} #{date}"
+filepath = File.expand_path("#{config['location'].chomp '/'}/#{filename}.#{config['format']}")
 
 # read previous coordinates if existent and needed
 if command =~ /^last/
@@ -36,19 +38,19 @@ def write_attributes(filename)
   `mdimport "#{filename}"`
 end
 
-# @todo add option to specify name if called within alfred's keyword instead of shortcut
 case command
   when 'area'
-    `/usr/sbin/screencapture #{config_flags} -i "#{filename}"`
+    `/usr/sbin/screencapture #{config_flags} -i "#{filepath}"`
   when 'area-clipboard'
-    `/usr/sbin/screencapture #{config_flags} -i -c "#{filename}"`
+    `/usr/sbin/screencapture #{config_flags} -i -c "#{filepath}"`
   when 'last-area'
     `/usr/sbin/screencapture #{config_flags} -c #{area}`
-    `./pbpaste-image > "#{filename}"`
+    `./pbpaste-image > "#{filepath}"`
     `/usr/bin/afplay Grab.aif`
-    write_attributes(filename)
+    write_attributes(filepath)
   when 'last-area-clipboard'
     `/usr/sbin/screencapture #{config_flags} -c #{area}`
     `/usr/bin/afplay Grab.aif`
-    write_attributes(filename)
+    write_attributes(filepath)
 end
+
