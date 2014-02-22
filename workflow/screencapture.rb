@@ -5,7 +5,7 @@ name = ARGV[1].to_s
 config = WorkflowConfig.new.config
 
 # calculate command line options for screencapture
-config_flags = "-t #{config['format']}#{ ' -0' unless config['shadow']}"
+config_flags = "-t #{config['format']}#{ ' -o' unless config['shadow'] == 1}"
 date = `date "+%Y-%m-%d at %H.%M.%S"`.chomp "\n"
 filename = !(name =~ /^[[:space:]]*$/) ? name : "#{config['name']} #{date}"
 filepath = File.expand_path("#{config['location'].chomp '/'}/#{filename}.#{config['format']}")
@@ -31,7 +31,7 @@ if command =~ /^last/
   area = "-R '#{coordinates[:x]},#{coordinates[:y]},#{coordinates[:width]},#{coordinates[:height]}'"
 end
 
-# write extra metadata to file
+# write extra metadata to file, I believe only to help the quick view render screenshots correctly in retina displays
 def write_attributes(filename)
   `xattr -wx com.apple.metadata:kMDItemIsScreenCapture '62706C697374303009080000000000000101000000000000000100000000000000000000000000000009' "#{filename}"`
   `xattr -w com.apple.metadata:kMDItemScreenCaptureType 'selection' "#{filename}"`
@@ -53,4 +53,3 @@ case command
     `/usr/bin/afplay Grab.aif`
     write_attributes(filepath)
 end
-
