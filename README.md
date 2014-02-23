@@ -27,6 +27,7 @@ Additionally, the workflow works by keywords. The keywords way has the advantage
 
 ![capturelast](https://raw.github.com/ramiroaraujo/alfred-screencapture-enhancer-workflow/master/screenshots/capturelast.png)
 
+As shown in all examples, the keyword version is capable of specifying a name for the captured image.
 
 ## Installation
 
