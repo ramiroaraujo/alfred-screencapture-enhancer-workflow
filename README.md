@@ -4,9 +4,9 @@ Workflow to enhance OS X screencapture capabilities, particularly with the optio
 
 The screencapture app that ships with OS X is quite Ok, but I've always missed being able to keep capturing the same previously captured region, for example for taking screenshots of different pages, where you define a region by taking the first screenshot, and then keep taking new ones in different pages.
 
-This workflow allows this by disabling the original OS X shortcuts and implementing the same shortcuts within the workflow. There're same caveats to install, basically manually removing the original shortcuts and manually adding the same ones to the workflow, since installing workflows does not allow you to import the defined shortcuts.
+This workflow allows this by disabling the original OS X shortcuts and implementing the same shortcuts within the workflow. There're same caveats to install, basically manually removing the original shortcuts and manually adding the same ones to the workflow, since installing workflows does not allow you to import the defined shortcuts (see below).
 
-The workflow performs a normal area screenshot, and at the same time runs a custom made cli app in Objective-C that listen for mouse and keyboard events and saves the proper screen coordinates for later use. I also circumvents a few bugs from the cli screenshot app.
+In the _area mode_ the workflow performs a normal area screenshot, and at the same time runs a custom made cli app in Objective-C that listen for mouse and keyboard events and saves the proper screen coordinates for later use. I also circumvents a few bugs from the cli screenshot app.
 
 Additionally, the workflow works by keywords. The keywords way has the advantage of allowing to specify a custom name for the screenshot, instead of the default one.
 
