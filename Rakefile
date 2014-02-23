@@ -131,11 +131,6 @@ task :export => [:config] do
       FileUtils.rmtree file if %w(Gemfile Gemfile.lock .bundle coordinates pbpaste-image save-mouse-coordinates).include? file
     end
 
-    Dir.chdir '../pbpaste-image' do
-      `xcodebuild`
-      FileUtils.cp 'build/Release/pbpaste-image', '../output'
-    end
-
     Dir.chdir '../save-mouse-coordinates' do
       `xcodebuild`
       FileUtils.cp 'build/Release/save-mouse-coordinates', '../output'
