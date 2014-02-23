@@ -8,7 +8,7 @@ This workflow allows this by disabling the original OS X shortcuts and implement
 
 The workflow performs a normal area screenshot, and at the same time runs a custom made cli app in Objective-C that listen for mouse and keyboard events and saves the proper screen coordinates for later use. I also circumvents a few bugs from the cli screenshot app.
 
-Additionally, the workflow also works by keywords. The keywords way has the advantage of allowing to specify a custom name for the screenshot, instead of the default one.
+Additionally, the workflow works by keywords. The keywords way has the advantage of allowing to specify a custom name for the screenshot, instead of the default one.
 
 ## Usage
 
