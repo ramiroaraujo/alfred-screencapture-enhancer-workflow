@@ -15,41 +15,41 @@ Additionally, the workflow also works by keywords. The keywords way has the adva
 * ```⌘+⇧+3``` to take a full screen capture, or write the keyword ```capturescreen``` and optionally specify a filename.
 * ```⌘+⌃+⇧+3``` to save a full screen capture to the clipboard, or write the keyword ```capturescreen``` and action it while holding control.
 
-![capturescreen](https://raw.github.com/ramiroaraujo/alfred-screencapture-workflow/master/screenshots/capturescreen.png)
+![capturescreen](https://raw.github.com/ramiroaraujo/alfred-screencapture-enhancer-workflow/master/screenshots/capturescreen.png)
 
 * ```⌘+⇧+4``` to take an area screen capture interactively, or write the keyword ```capture``` and optionally specify a filename.
 * ```⌘+⌃+⇧+4``` to save an area screen capture interactively to the clipboard, or write the keyword ```capture``` and action it while holding control.
 
-![capture](https://raw.github.com/ramiroaraujo/alfred-screencapture-workflow/master/screenshots/capture.png)
+![capture](https://raw.github.com/ramiroaraujo/alfred-screencapture-enhancer-workflow/master/screenshots/capture.png)
 
 * ```⌘+⇧+⌥+4``` to take a screen capture of the previously used area, or write the keyword ```capturelast``` and optionally specify a filename.
 * ```⌘+⇧+⌥+⌃+4``` to save a screen capture of the previously used area to the clipboard, or write the keyword ```capturelast``` and action it while holding control.
 
-![capturelast](https://raw.github.com/ramiroaraujo/alfred-screencapture-workflow/master/screenshots/capturelast.png)
+![capturelast](https://raw.github.com/ramiroaraujo/alfred-screencapture-enhancer-workflow/master/screenshots/capturelast.png)
 
 
 ## Installation
 
 _First_, go to ```System Preferences -> Keyboard```, there to the ```Shortcuts``` tab, select ```Screenshots``` in the left list and uncheck all the shortcuts on the right, as shown below.
 
-![preferences](https://raw.github.com/ramiroaraujo/alfred-screencapture-workflow/master/screenshots/preferences.png)
+![preferences](https://raw.github.com/ramiroaraujo/alfred-screencapture-enhancer-workflow/master/screenshots/preferences.png)
 
 Then install the workflow and fill the 6 shortcuts with the desired key-combos. The workflow is imported without key combos. It should look like this:
 
-![no-shortcuts](https://raw.github.com/ramiroaraujo/alfred-screencapture-workflow/master/screenshots/no-shortcuts.png)
+![no-shortcuts](https://raw.github.com/ramiroaraujo/alfred-screencapture-enhancer-workflow/master/screenshots/no-shortcuts.png)
 
-This are the recommended key-combos:
+This are the recommended key-combos, the same ones disabled earlier, plus two new ones:
 
-1. ```⌘+⇧+4```
-2. ```⌘+⌃+⇧+4```
-3. ```⌘+⇧+⌥+4```
-4. ```⌘+⇧+⌥+⌃+4```
-5. ```⌘+⇧+3```
-6. ```⌘+⌃+⇧+3```
+1. ```⌘+⇧+4```, to capture an area
+2. ```⌘+⌃+⇧+4```, to capture an area to the clipboard
+3. ```⌘+⇧+⌥+4```, to capture the last area
+4. ```⌘+⇧+⌥+⌃+4```, to capture the last area to the clipboard
+5. ```⌘+⇧+3```, to capture the full screen
+6. ```⌘+⌃+⇧+3```, to capture the full screen to the clipboard
 
 After configuring the shortcuts it should look like this:
 
-![shortcuts](https://raw.github.com/ramiroaraujo/alfred-screencapture-workflow/master/screenshots/shortcuts.png)
+![shortcuts](https://raw.github.com/ramiroaraujo/alfred-screencapture-enhancer-workflow/master/screenshots/shortcuts.png)
 
 
 ## Configuration

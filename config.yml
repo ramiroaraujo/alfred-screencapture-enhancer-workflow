@@ -1,15 +1,15 @@
 ## workflow build config
 
 # id and name for the workflow (bundle id = domain.id)
-id: alfred-screencapture-workflow
+id: alfred-screencapture-enhancer-workflow
 
 # base domain
 domain: com.tumblr.ramiroaraujo
 
 name: Screencapture
-description: A screencapture façade-like workflow capable of capturing the last region.
+description: A screencapture enhancer workflow capable of capturing the last region and naming captured files.
 created_by: Ramiro Araujo
-website: https://github.com/ramiroaraujo/alfred-screencapture-workflow
+website: https://github.com/ramiroaraujo/alfred-screencapture-enhancer-workflow
 readme: readme
 
 ## development config

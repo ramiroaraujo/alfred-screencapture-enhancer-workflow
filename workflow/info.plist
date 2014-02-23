@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.tumblr.ramiroaraujo.alfred-screencapture-workflow</string>
+	<string>com.tumblr.ramiroaraujo.alfred-screencapture-enhancer-workflow</string>
 	<key>connections</key>
 	<dict>
 		<key>0B3DD69D-C9E3-4C88-B5F9-441244C7DE7B</key>
@@ -133,7 +133,7 @@
 	<key>createdby</key>
 	<string>Ramiro Araujo</string>
 	<key>description</key>
-	<string>A screencapture façade-like workflow capable of capturing the last region.</string>
+	<string>A screencapture enhancer workflow capable of capturing the last region and naming captured files.</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -171,7 +171,7 @@
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>script</key>
-				<string>./save-mouse-coordinates &amp; /usr/bin/ruby screencapture.rb "area" "{query}"</string>
+				<string>./save-mouse-coordinates &amp; /usr/bin/ruby screencapture.rb &quot;area&quot; &quot;{query}&quot;</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -209,7 +209,7 @@
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>script</key>
-				<string>./save-mouse-coordinates &amp; /usr/bin/ruby screencapture.rb "area-clipboard" "{query}"</string>
+				<string>./save-mouse-coordinates &amp; /usr/bin/ruby screencapture.rb &quot;area-clipboard&quot; &quot;{query}&quot;</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -276,7 +276,7 @@
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>script</key>
-				<string>/usr/bin/ruby screencapture.rb "last-area" "{query}"</string>
+				<string>/usr/bin/ruby screencapture.rb &quot;last-area&quot; &quot;{query}&quot;</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -314,7 +314,7 @@
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>script</key>
-				<string>/usr/bin/ruby screencapture.rb "last-area-clipboard" "{query}"</string>
+				<string>/usr/bin/ruby screencapture.rb &quot;last-area-clipboard&quot; &quot;{query}&quot;</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -356,7 +356,7 @@
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>script</key>
-				<string>/usr/bin/ruby screencapture.rb "screen" "{query}"</string>
+				<string>/usr/bin/ruby screencapture.rb &quot;screen&quot; &quot;{query}&quot;</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -419,7 +419,7 @@
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>script</key>
-				<string>/usr/bin/ruby screencapture.rb "screen-clipboard" "{query}"</string>
+				<string>/usr/bin/ruby screencapture.rb &quot;screen-clipboard&quot; &quot;{query}&quot;</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -463,80 +463,80 @@
 		<key>0B3DD69D-C9E3-4C88-B5F9-441244C7DE7B</key>
 		<dict>
 			<key>ypos</key>
-			<real>490</real>
+			<real>490.0</real>
 		</dict>
 		<key>1B76B123-FE16-438C-BE8B-94818C7153B1</key>
 		<dict>
 			<key>ypos</key>
-			<real>70</real>
+			<real>70.0</real>
 		</dict>
 		<key>2CDE943E-0548-4CEA-A29E-46B95C13ED29</key>
 		<dict>
 			<key>ypos</key>
-			<real>10</real>
+			<real>10.0</real>
 		</dict>
 		<key>2EFDA95A-D125-45A1-8C0A-85A6E53B99F0</key>
 		<dict>
 			<key>ypos</key>
-			<real>130</real>
+			<real>130.0</real>
 		</dict>
 		<key>3360D58A-362B-43D5-ABE6-1F83720798F8</key>
 		<dict>
 			<key>ypos</key>
-			<real>370</real>
+			<real>370.0</real>
 		</dict>
 		<key>3DBDDE81-B22A-4954-9214-1241ED9B5A52</key>
 		<dict>
 			<key>ypos</key>
-			<real>310</real>
+			<real>310.0</real>
 		</dict>
 		<key>4CAB6333-906A-4349-8486-6A1BAB94500E</key>
 		<dict>
 			<key>ypos</key>
-			<real>130</real>
+			<real>130.0</real>
 		</dict>
 		<key>614A0F89-E274-4DD0-8FC0-ACFF170612D4</key>
 		<dict>
 			<key>ypos</key>
-			<real>610</real>
+			<real>610.0</real>
 		</dict>
 		<key>6A0B0AA0-5D12-4E75-AFBD-76C56DEDFAD1</key>
 		<dict>
 			<key>ypos</key>
-			<real>250</real>
+			<real>250.0</real>
 		</dict>
 		<key>80EBEB7F-C3FF-482F-82E8-E9DAABA958B0</key>
 		<dict>
 			<key>ypos</key>
-			<real>490</real>
+			<real>490.0</real>
 		</dict>
 		<key>82E25C76-F2B3-4314-AC28-47F84BCFADBC</key>
 		<dict>
 			<key>ypos</key>
-			<real>250</real>
+			<real>250.0</real>
 		</dict>
 		<key>A9A7FD88-DD4D-4D2F-9585-2CED8508022F</key>
 		<dict>
 			<key>ypos</key>
-			<real>10</real>
+			<real>10.0</real>
 		</dict>
 		<key>DC61C993-3DC7-4CD8-8503-6B68B28ABCDF</key>
 		<dict>
 			<key>ypos</key>
-			<real>550</real>
+			<real>550.0</real>
 		</dict>
 		<key>EBA5E6A0-044C-467E-948F-65ECC75BDD34</key>
 		<dict>
 			<key>ypos</key>
-			<real>370</real>
+			<real>370.0</real>
 		</dict>
 		<key>F356255B-4349-482F-A505-89B0B9D90F14</key>
 		<dict>
 			<key>ypos</key>
-			<real>610</real>
+			<real>610.0</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
-	<string>https://github.com/ramiroaraujo/alfred-screencapture-workflow</string>
+	<string>https://github.com/ramiroaraujo/alfred-screencapture-enhancer-workflow</string>
 </dict>
 </plist>
