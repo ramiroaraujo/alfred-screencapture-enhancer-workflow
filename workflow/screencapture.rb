@@ -31,25 +31,20 @@ if command =~ /^last/
   area = "-R '#{coordinates[:x]},#{coordinates[:y]},#{coordinates[:width]},#{coordinates[:height]}'"
 end
 
-# write extra metadata to file, I believe only to help the quick view render screenshots correctly in retina displays
-def write_attributes(filename)
-  `xattr -wx com.apple.metadata:kMDItemIsScreenCapture '62706C697374303009080000000000000101000000000000000100000000000000000000000000000009' "#{filename}"`
-  `xattr -w com.apple.metadata:kMDItemScreenCaptureType 'selection' "#{filename}"`
-  `mdimport "#{filename}"`
-end
-
 case command
   when 'area'
     `/usr/sbin/screencapture #{config_flags} -i "#{filepath}"`
   when 'area-clipboard'
     `/usr/sbin/screencapture #{config_flags} -i -c "#{filepath}"`
   when 'last-area'
-    `/usr/sbin/screencapture #{config_flags} -c #{area}`
-    `./pbpaste-image > "#{filepath}"`
+    `/usr/sbin/screencapture #{config_flags} #{area}`
+    `mv #{area[3..-1]} "#{filepath}"`
     `/usr/bin/afplay Grab.aif`
-    write_attributes(filepath)
   when 'last-area-clipboard'
     `/usr/sbin/screencapture #{config_flags} -c #{area}`
     `/usr/bin/afplay Grab.aif`
-    write_attributes(filepath)
+  when 'screen'
+    `/usr/sbin/screencapture #{config_flags} "#{filepath}"`
+  when 'screen-clipboard'
+    `/usr/sbin/screencapture #{config_flags} -c`
 end
