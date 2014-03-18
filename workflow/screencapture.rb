@@ -1,4 +1,4 @@
-require_relative 'workflow_config'
+require 'workflow_config'
 
 command = ARGV[0]
 name = ARGV[1].to_s
@@ -22,10 +22,10 @@ if command =~ /^last/
   # read coordinates
   x_ini, x_end, y_ini, y_end = IO.read('coordinates').split(' ').map(&:to_i)
   coordinates = {
-      x: x_ini < x_end ? x_ini : x_end,
-      y: y_ini < y_end ? y_ini : y_end,
-      width: x_ini < x_end ? x_end - x_ini : x_ini - x_end,
-      height: y_ini < y_end ? y_end - y_ini : y_ini - y_end,
+      :x => x_ini < x_end ? x_ini : x_end,
+      :y => y_ini < y_end ? y_ini : y_end,
+      :width => x_ini < x_end ? x_end - x_ini : x_ini - x_end,
+      :height => y_ini < y_end ? y_end - y_ini : y_ini - y_end,
   }
 
   area = "-R '#{coordinates[:x]},#{coordinates[:y]},#{coordinates[:width]},#{coordinates[:height]}'"

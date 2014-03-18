@@ -1,5 +1,7 @@
 # Screencapture enhancer for Alfred App
 
+> Note, this is the pre-mavericks branch. For the Mavericks branch go to the [master branch](https://github.com/ramiroaraujo/alfred-screencapture-enhancer-workflow)
+
 Workflow to enhance OS X screencapture capabilities, particularly with the option to capture _last captured_ area and naming options.
 
 The screencapture app that ships with OS X is quite Ok, but I've always missed being able to keep capturing the same previously captured region, for example for taking screenshots of different pages, where you define a region by taking the first screenshot, and then keep taking new ones in different pages.
