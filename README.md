@@ -31,6 +31,10 @@ As shown in all examples, the keyword version is capable of specifying a name fo
 
 ## Installation
 
+For OS X 10.9 Mavericks, Download the [alfred-screencapture-enhancer.alfredworkflow](https://github.com/ramiroaraujo/alfred-tmux-workflow/raw/master/alfred-tmux.alfredworkflow) and import to Alfred 2.
+
+For Previous OS X Versions, Download the [alfred-screencapture-enhancer.alfredworkflow](https://github.com/ramiroaraujo/alfred-tmux-workflow/raw/pre-mavericks/alfred-tmux.alfredworkflow) and import to Alfred 2.
+
 _First_, go to ```System Preferences -> Keyboard```, there to the ```Shortcuts``` tab, select ```Screenshots``` in the left list and uncheck all the shortcuts on the right, as shown below.
 
 ![preferences](https://raw.github.com/ramiroaraujo/alfred-screencapture-enhancer-workflow/master/screenshots/preferences.png)
